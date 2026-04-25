@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Rating Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Amazon Rating Predictor</h1>
+        <p>Enter product details to predict rating category</p>
+        <form action="/predict" method="post">
+            <input type="number" step="any" name="dp" placeholder="Discounted Price" required>
+            <input type="number" step="any" name="ap" placeholder="Actual Price" required>
+            <input type="number" step="any" name="dperc" placeholder="Discount Percentage" required>
+            <input type="number" step="any" name="rc" placeholder="Rating Count" required>
+            <button type="submit">Predict Now</button>
+        </form>      
+        {% if prediction_text %}
+            <div class="result-box">
+                <h2>{{ prediction_text }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
